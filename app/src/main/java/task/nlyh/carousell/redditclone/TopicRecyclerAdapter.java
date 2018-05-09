@@ -54,6 +54,9 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
                 EventBus.getDefault().post(new UpdateUiEvent(topicsList));
             }
         });
+
+        // additional textview specifically for this task to allow ease of knowing how many cards are there
+        holder.tv_card_number.setText("Card Number: " + (position+1));
     }
 
     @Override
@@ -69,6 +72,7 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
         Button button_upvote, button_downvote;
         TextView topic_content;
         TextView tv_upvote_count, tv_downvote_count;
+        TextView tv_card_number; // additional textview specifically for this task to allow ease of knowing how many cards are there
 
         public RecyclerViewHolder(View view) {
             super(view);
@@ -77,6 +81,7 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
             topic_content = view.findViewById(R.id.textview_topic_content);
             tv_upvote_count = view.findViewById(R.id.textview_upvote_count);
             tv_downvote_count = view.findViewById(R.id.textview_downvote_count);
+            tv_card_number = view.findViewById(R.id.textview_cardNumber);
         }
     }
 }

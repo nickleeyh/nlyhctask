@@ -46,8 +46,9 @@ public class TopicUtils {
         for (int i = 1; i != maxSize; i++) {
             int randomUpvotes = rand.nextInt(100);
             int randomDownvotes = rand.nextInt(10);
+            int randomTopicNumber = rand.nextInt(1000);
             topicArrayList.add(new Topic(
-                    "This is a test topic to showcase top 20 functionality.",
+                    "This is a test topic #" + randomTopicNumber + " to showcase top 20 functionality.",
                     randomUpvotes,
                     randomDownvotes));
         }
