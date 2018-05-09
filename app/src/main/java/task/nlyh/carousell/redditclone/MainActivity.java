@@ -1,8 +1,9 @@
 package task.nlyh.carousell.redditclone;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AlertDialog dialog_post_topic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                showDialog_PostTopic();
             }
         });
     }
@@ -48,5 +49,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This function is to show a dialog to get user input for a Topic
+     * */
+    private void showDialog_PostTopic() {
+        if (dialog_post_topic != null && dialog_post_topic.isShowing()) {
+            return;
+        }
+
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View mView = layoutInflater.inflate(R.layout.dialog_post_topic, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(mView);
+
+        final EditText editText_topic_content = (EditText) mView.findViewById(R.id.dialog_edittext);
+
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Post", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Topic newTopic = new Topic(editText_topic_content.getText().toString());
+                        topicsList.add(newTopic);
+                        update_ui();
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        dialog_post_topic = alertDialogBuilder.create();
+        dialog_post_topic.show();
     }
 }
