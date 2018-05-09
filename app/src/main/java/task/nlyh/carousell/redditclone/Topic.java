@@ -2,7 +2,7 @@ package task.nlyh.carousell.redditclone;
 
 public class Topic {
     private String content;
-    private int upvoteCount, downvoteCount;
+    private int upvoteCount = 0, downvoteCount = 0;
 
     public Topic () {}
 
@@ -32,5 +32,13 @@ public class Topic {
 
     public void setDownvoteCount(int downvoteCount) {
         this.downvoteCount = downvoteCount;
+    }
+
+    public void incrementUpvoteCount (int increment) {
+        upvoteCount += increment;
+    }
+
+    public void incrementDownvoteCount (int increment) {
+        downvoteCount += increment;
     }
 }
