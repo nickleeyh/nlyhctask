@@ -10,6 +10,12 @@ public class Topic {
         this.content = content;
     }
 
+    public Topic(String content, int upvoteCount, int downvoteCount) {
+        this.content = content;
+        this.upvoteCount = upvoteCount;
+        this.downvoteCount = downvoteCount;
+    }
+
     public String getContent() {
         return content;
     }

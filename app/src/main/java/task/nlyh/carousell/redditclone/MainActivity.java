@@ -76,24 +76,11 @@ public class MainActivity extends AppCompatActivity {
      * This function is to update the homescreen UI's recycler view
      * */
     private void update_ui () {
-        sortTopicsList(topicsList);
+        TopicUtils.sortTopicsList(topicsList);
         adapter = new TopicRecyclerAdapter(topicsList);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-    }
-
-    /**
-     * This function sort the topics list based on upvotes, descending
-     * Purpose: Allow easier unit testing due to modularization of methods
-     * */
-    private void sortTopicsList (ArrayList<Topic> topicsList) {
-        Collections.sort(topicsList, new Comparator<Topic>() {
-            @Override
-            public int compare(Topic t1, Topic t2) {
-                return t2.getUpvoteCount() - t1.getUpvoteCount();
-            }
-        });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
