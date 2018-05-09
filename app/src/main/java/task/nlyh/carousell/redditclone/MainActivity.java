@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class MainActivity extends AppCompatActivity {
 
     private AlertDialog dialog_post_topic;
@@ -51,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent (UpdateUiEvent event) {
+    }
+
     /**
      * This function is to show a dialog to get user input for a Topic
      * */
@@ -84,5 +92,17 @@ public class MainActivity extends AppCompatActivity {
 
         dialog_post_topic = alertDialogBuilder.create();
         dialog_post_topic.show();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }
