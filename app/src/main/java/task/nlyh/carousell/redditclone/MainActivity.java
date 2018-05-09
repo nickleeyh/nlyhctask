@@ -14,9 +14,13 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private AlertDialog dialog_post_topic;
+    private ArrayList<Topic> topicsList = new ArrayList<Topic>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
