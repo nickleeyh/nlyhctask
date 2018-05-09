@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AlertDialog dialog_post_topic;
     private ArrayList<Topic> topicsList = new ArrayList<Topic>();
+    private final int NUM_TOPICS_ON_SCREEN = 20;
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void update_ui () {
         TopicUtils.sortTopicsList(topicsList);
-        adapter = new TopicRecyclerAdapter(topicsList);
+        adapter = new TopicRecyclerAdapter(TopicUtils.subList_TopicsList(topicsList, NUM_TOPICS_ON_SCREEN));
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
