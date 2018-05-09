@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="dialog_post_topic_title">Post a topic</string>
     <string name="dialog_post_topic_content">Enter here (Max Characters: 255)</string>
+    <string name="topic_downvote">Downvote</string>
+    <string name="topic_upvote">Upvote</string>
 </resources>
