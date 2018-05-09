@@ -63,16 +63,18 @@ public class MainActivity extends AppCompatActivity {
      * This function is to show a dialog to get user input for a Topic
      * */
     private void showDialog_PostTopic() {
+        // Check to ensure no dialog is already showing
         if (dialog_post_topic != null && dialog_post_topic.isShowing()) {
             return;
         }
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View mView = layoutInflater.inflate(R.layout.dialog_post_topic, null);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(mView);
 
-        final EditText editText_topic_content = (EditText) mView.findViewById(R.id.dialog_edittext);
+        final EditText editText_topic_content = mView.findViewById(R.id.dialog_edittext);
 
         alertDialogBuilder
                 .setCancelable(false)
@@ -83,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                         update_ui();
                     }
                 })
-
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
