@@ -25,4 +25,16 @@ public class MainActivityTest {
             assertEquals(topicsList.get(i).getContent(), expectedOutcome[i]);
         }
     }
+
+    @Test
+    public void test_subList_TopicsList() {
+        for (int i = 0; i != 25; i++) {
+            topicsList.add(new Topic("Content", 0,0));
+        }
+        TopicUtils.sortTopicsList(topicsList);
+
+        // Expected Outcome: Return only an ArrayList of size 20
+        int expectedOutcome = 20;
+        assertEquals(expectedOutcome, TopicUtils.subList_TopicsList(topicsList, expectedOutcome).size());
+    }
 }

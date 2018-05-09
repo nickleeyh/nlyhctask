@@ -9,6 +9,7 @@ public class TopicUtils {
     /**
      * This function sort the topics list based on upvotes, descending
      * Purpose: Allow easier unit testing due to modularization of methods
+     * @param topicsList - ArrayList that holds all the topics
      * */
     protected static void sortTopicsList (ArrayList<Topic> topicsList) {
         Collections.sort(topicsList, new Comparator<Topic>() {
