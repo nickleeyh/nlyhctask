@@ -39,7 +39,6 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
             public void onClick(View v) {
                 // Update the topic cardview on user's upvoting
                 topic.incrementUpvoteCount(1);
-                holder.tv_upvote_count.setText(String.valueOf(topic.getUpvoteCount()));
                 EventBus.getDefault().post(new UpdateUiEvent(topicsList));
             }
         });
@@ -50,7 +49,6 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
             public void onClick(View v) {
                 // Update the topic cardview on user's downvoting
                 topic.incrementDownvoteCount(1);
-                holder.tv_downvote_count.setText(String.valueOf(topic.getDownvoteCount()));
                 EventBus.getDefault().post(new UpdateUiEvent(topicsList));
             }
         });

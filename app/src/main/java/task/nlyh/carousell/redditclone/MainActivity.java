@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -93,8 +94,13 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Post", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Topic newTopic = new Topic(editText_topic_content.getText().toString());
+                        /**
+                         * New Topic created with 999 upvotes to allow it to show
+                         * This is because homescreen was initialized to dummy data
+                         */
+                        Topic newTopic = new Topic(editText_topic_content.getText().toString(), 999, 0);
                         topicsList.add(newTopic);
+                        Toast.makeText(MainActivity.this, "Topic Posted.", Toast.LENGTH_SHORT).show();
                         update_ui();
                     }
                 })
