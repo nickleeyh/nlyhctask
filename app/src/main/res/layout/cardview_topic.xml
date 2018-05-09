@@ -9,13 +9,12 @@
         android:id="@+id/topicCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
         android:elevation="5dp"
         android:foreground="?android:attr/selectableItemBackground"
-        card_view:cardCornerRadius="0dp"
         card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
@@ -26,21 +25,20 @@
                 android:id="@+id/textview_topic_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="All Night Party"
-                android:textStyle="bold" />
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="All Night Party" />
 
             <LinearLayout
                 android:id="@+id/layout_upvote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textview_topic_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_small"
                 android:layout_toLeftOf="@id/layout_downvote"
                 android:orientation="vertical">
 
@@ -68,10 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/textview_topic_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_small"
                 android:orientation="vertical">
 
                 <TextView
