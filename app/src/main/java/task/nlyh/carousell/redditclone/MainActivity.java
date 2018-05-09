@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recycle_view);
+        topicsList = TopicUtils.createDummyTopicsList(25); // populate homescreen
         update_ui();
     }
 
@@ -51,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
      * This function is to update the homescreen UI's recycler view
      * */
     private void update_ui () {
+        // First we sort the list of topics in terms of upvotes, descending
         TopicUtils.sortTopicsList(topicsList);
+
+        // Then we add the subset of the arraylist into the recycler adapter to only show these topics
         adapter = new TopicRecyclerAdapter(TopicUtils.subList_TopicsList(topicsList, NUM_TOPICS_ON_SCREEN));
+
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
