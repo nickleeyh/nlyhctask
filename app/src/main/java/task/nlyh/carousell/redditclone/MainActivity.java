@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recycle_view);
+        update_ui();
     }
 
     @Override
@@ -69,9 +72,34 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This function is to update the homescreen UI's recycler view
+     * */
+    private void update_ui () {
+        sortTopicsList(topicsList);
+        adapter = new TopicRecyclerAdapter(topicsList);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
+    /**
+     * This function sort the topics list based on upvotes, descending
+     * Purpose: Allow easier unit testing due to modularization of methods
+     * */
+    private void sortTopicsList (ArrayList<Topic> topicsList) {
+        Collections.sort(topicsList, new Comparator<Topic>() {
+            @Override
+            public int compare(Topic t1, Topic t2) {
+                return t2.getUpvoteCount() - t1.getUpvoteCount();
+            }
+        });
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent (UpdateUiEvent event) {
         topicsList = event.getTopicsList();
+        update_ui();
     }
 
     /**
